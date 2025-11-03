@@ -140,7 +140,7 @@ export function obscureSensitiveData(obj: Record<string, any> | any[]) {
     obj.forEach(obscureSensitiveData);
   } else if (obj && typeof obj === "object") {
     for (const key in obj) {
-      if (Object.hasOwn(obj, key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         if (sensitiveParams.has(key.toLowerCase())) {
           obj[key] = "******";
         } else if (obj[key] !== null && typeof obj[key] === "object") {
